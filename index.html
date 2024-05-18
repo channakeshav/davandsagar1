@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Python Script</title>
+    <style>
+        body {
+            background-image: url('https://play-lh.googleusercontent.com/WU_qxCZdPm9HaeMFFs6BLdg1vFqTCdL3aWJDGatGzzF27-sPn4yOlRL4aBQXRof7DdH8=w526-h296-rw');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #runScriptButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="runScriptButton">Run Python Script</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        document.getElementById('runScriptButton').addEventListener('click', function() {
+            fetch('/run-script', {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').innerText = data;
+            });
+        });
+    </script>
+</body>
+</html>
